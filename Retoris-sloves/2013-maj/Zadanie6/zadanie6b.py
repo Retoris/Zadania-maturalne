@@ -1,5 +1,4 @@
 from zadanie6a import IleSpelniaWarunek
-import requests
 
 def OsemkowyNaDziesietny(file):
     base = 8
@@ -20,15 +19,13 @@ def main():
     file = "dane.txt"
     transfertToDecimal = OsemkowyNaDziesietny(file)
 
-    SSOurl = "https://raw.githubusercontent.com/Retoris/Zadania-maturalne/refs/heads/main/Retoris-sloves/SaveSingleOutput.py"
-    response = requests.get(SSOurl)
-    if response.status_code == 200:
-        code = response.text
-        exec(code)
-        print(globals().keys())
+    with open("daneDecimal.txt",'wt',newline='\n') as daneD:
+        for row in transfertToDecimal:
+            row = str(row)
+            daneD.write(row+'\n')
 
-    print(transfertToDecimal)
+    odp = IleSpelniaWarunek("daneDecimal.txt")
+    with open('wyniki6.txt','at',newline='\n') as f:
+        f.write(f'\n6b: {odp}')
 
 
-
-main()

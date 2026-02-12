@@ -14,4 +14,4 @@ def main():
     odp = IleSpelniaWarunek(file)
     with open("wyniki6.txt", 'at') as output:
         output.write(f"6a: {str(odp)}")
-main()
+
